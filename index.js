@@ -1,6 +1,9 @@
 var fs = require('fs');
 var path = require('path');
 
+var PhantomJS2 = require('phantomjs2');
+
+
 function serializeOption(value) {
   if (typeof value === 'function') {
     return value.toString();
@@ -13,10 +16,10 @@ var phantomJSExePath = function () {
   // Using the cmd as the process to execute causes problems cleaning up the processes
   // so we walk from the cmd to the phantomjs.exe and use that instead.
 
-  var phantomSource = require('phantomjs2-ext').path;
+  var phantomSource = PhantomJS2.path;
 
   if (path.extname(phantomSource).toLowerCase() === '.cmd') {
-    return path.join(path.dirname( phantomSource ), '//node_modules//phantomjs2-ext//lib//phantom//phantomjs.exe');
+    return path.join(path.dirname( phantomSource ), '//node_modules//phantomjs2//lib//phantom//phantomjs.exe');
   }
 
   return phantomSource;
@@ -58,8 +61,8 @@ PhantomJSBrowser.prototype = {
   name: 'PhantomJS2',
 
   DEFAULT_CMD: {
-    linux: require('phantomjs2-ext').path,
-    darwin: require('phantomjs2-ext').path,
+    linux: PhantomJS2.path,
+    darwin: PhantomJS2.path,
     win32: phantomJSExePath()
   },
   ENV_CMD: 'PHANTOMJS_BIN'

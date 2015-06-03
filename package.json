@@ -17,11 +17,9 @@
     "phantomjs2"
   ],
   "author": "Alexandr Skackhov <gskachkov@gmail.com>",
-  "dependencies": {
-    "phantomjs2-ext": "^0.0.4"
-  },
   "peerDependencies": {
-    "karma": ">=0.9"
+    "karma": ">=0.9",
+    "phantomjs2": ">=2.0.0"
   },
   "license": "MIT",
   "devDependencies": {
